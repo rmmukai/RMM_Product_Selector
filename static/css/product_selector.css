@@ -1,0 +1,11 @@
+/* This CSS is just for the product_selector.html */
+
+* {
+    /* border: dotted 1px red; */
+    padding: 0;
+    margin: 0;
+}
+
+.hide {
+    display: none;
+}

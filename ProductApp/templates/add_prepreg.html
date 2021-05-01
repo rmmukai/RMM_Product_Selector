@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Add Prepreg</title>
+</head>
+
+<body>
+
+    <h1>Add Prepreg</h1>
+
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p>- {{message}} -</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    <form action="/products/create_prepreg" method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="prepreg_name">Prepreg Name/ID</label>
+            <input type="text" name="prepreg_name" id="prepreg_name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="tg">Tg</label>
+            <input type="text" name="tg" id="tg" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="cure_temp">Cure/Processing Temperature</label>
+            <input type="text" name="cure_temp" id="cure_temp" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="prepreg_processing">Processing</label>
+            <input type="text" name="prepreg_processing" id="prepreg_processing" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="omit">Omit Market Segment</label>
+            <input type="text" name="omit" id="omit" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="resin_type">Resin Type</label>
+            <input type="text" name="resin_type" id="resin_type" class="form-control">
+        </div>
+
+        <button class="btn btn-primary">Add Prepreg</button>
+
+
+    </form>
+
+</body>
+
+</html>

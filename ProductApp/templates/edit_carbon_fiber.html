@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Edit {{ carbon_fiber.carbon_fiber_name }}</h1>
+
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <p>- {{message}} -</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    <form action="/products/{{ carbon_fiber.id }}/update_carbon_fiber" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="carbon_fiber_name">Carbon Fiber Name/ID</label>
+            <input type="text" name="carbon_fiber_name" id="carbon_fiber_name" class="form-control" value="{{ carbon_fiber.carbon_fiber_name }}">
+        </div>
+
+        <div class="form-group">
+            <label for="tensile_modulus">Tensile Modulus</label>
+            <input type="text" name="tensile_modulus" id="tensile_modulus" class="form-control" value="{{ carbon_fiber.tensile_modulus }}">
+        </div>
+
+        <div class="form-group">
+            <label for="tensile_strength">Tensile Strength</label>
+            <input type="text" name="tensile_strength" id="tensile_strength" class="form-control" value="{{ carbon_fiber.tensile_strength }}">
+        </div>
+
+        <div class="form-group">
+            <label for="resin_matrix">Resin Matrix</label>
+            <input type="text" name="resin_matrix" id="resin_matrix" class="form-control" value="{{ carbon_fiber.resin_matrix }}">
+        </div>
+
+        <div class="form-group">
+            <label for="carbon_fiber_processing">Processing</label>
+            <input type="text" name="carbon_fiber_processing" id="carbon_fiber_processing" class="form-control" value="{{ carbon_fiber.carbon_fiber_processing }}">
+        </div>
+
+        <button class="btn btn-primary">Submit</button>
+
+        <h2>Would You like to delete this item?</h2>
+            <a href="/products/{{ carbon_fiber.id }}/delete_carbon_fiber">Delete</a>
+    </form>
+</body>
+</html>

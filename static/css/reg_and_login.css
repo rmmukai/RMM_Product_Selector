@@ -1,0 +1,64 @@
+/* This CSS is just for the registration_login.html */
+
+* {
+    /* border: dotted 1px red; */
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper {
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 1000px;
+    min-height: 600px;
+    display: inline-block;
+    vertical-align: top;
+    zoom: 125%;
+}
+
+.toray_logo {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.toray_logo img {
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.banner_logo {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.banner_logo img {
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#reg_login {
+    padding: 20px;
+    width: 500px;
+    border: solid black;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+#reg_login #register {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#reg_login #login {
+    padding-left: 60px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#reg_login #errors p {
+    color:darkred;
+    font-size: 10pt;
+}
+

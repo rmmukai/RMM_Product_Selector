@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all_products.css' %}">
+</head>
+
+<body>
+
+    <div class="toray_logo">
+        <img src="{% static 'images/toray_logo.jpg' %}">
+    </div>
+
+    <div class="banner_logo">
+        <img src="{% static 'images/banner_logo.jpg' %}">
+    </div>
+
+    <div id="wrapper">
+
+        <div id="pic_banner">
+        </div>
+        <h1>All Products</h1>
+
+        <div id="about_content">
+            <p id="page_use">
+                Everything in the tables are what is in the database. To add items to the database click the "Add Prepreg" or "Add Carbon Fiber" buttons.
+            </p>
+        </div>
+
+        <div id="all_tables">
+
+            <div id="pp_all_product">
+                <a href="/products/add_prepreg">Add Prepreg</a>
+            <!--    This list is for Prepreg products. See all_product def in views.py-->
+                <table class="product_table">
+                    <thead class="column_names">
+                        <tr>
+                            <th>Prepreg Name/ID</th>
+                            <th>Tg</th>
+                            <th>Cure/Processing Temperature</th>
+                            <th>Processing</th>
+                            <th>Omit Market Segment</th>
+                            <th>Resin Type</th>
+                            <th>Edit Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for products in prepreg %}
+                        <tr>
+                            <td>{{ products.prepreg_name }}</td>
+                            <td>{{ products.tg }}</td>
+                            <td>{{ products.cure_temp }}</td>
+                            <td>{{ products.prepreg_processing }}</td>
+                            <td>{{ products.omit }}</td>
+                            <td>{{ products.resin_type }}</td>
+                            <td><a href="/products/{{ products.id }}/edit_prepreg">Edit</a>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+            <div id="cf_all_product">
+                <a href="/products/add_carbon_fiber">Add Carbon Fiber</a>
+            <!--    This list is for Carbon Fiber products. See all_product def in views.py-->
+                <table class="product_table">
+                    <thead class="column_names">
+                        <tr>
+                            <th>Carbon Fiber Name/ID</th>
+                            <th>Tensile Modulus</th>
+                            <th>Tensile Strength</th>
+                            <th>Resin Matrix</th>
+                            <th>Processing</th>
+                            <th>Edit Item</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for products in carbon_fiber %}
+                        <tr>
+                            <td>{{ products.carbon_fiber_name }}</td>
+                            <td>{{ products.tensile_modulus }}</td>
+                            <td>{{ products.tensile_strength }}</td>
+                            <td>{{ products.resin_matrix }}</td>
+                            <td>{{ products.carbon_fiber_processing }}</td>
+                            <td><a href="/products/{{ products.id }}/edit_carbon_fiber">Edit</a>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

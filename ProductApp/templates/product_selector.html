@@ -1,0 +1,219 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product_selector.css' %}">
+    <script src="{% static 'javascript/product_selector.js' %}"></script>
+</head>
+
+<body>
+
+    <div class="toray_logo">
+        <img src="{% static 'images/toray_logo.jpg' %}">
+    </div>
+
+    <div class="banner_logo">
+        <img src="{% static 'images/banner_logo.jpg' %}">
+    </div>
+
+    <div id="product_selector">
+
+        <h2>Are you looking for Carbon Fiber or Prepreg?</h2>
+
+<!--    Name of input is type selector for both. This will let you choose either one or the other versus both.-->
+<!--    This matters for functionality and the server-->
+        <label for="carbon_fiber">Carbon Fiber</label>
+        <input type="radio" name="type_selector" id="carbon_fiber" onclick="handleClickCF()" checked>
+
+        <label for="prepreg">Prepreg</label>
+        <input type="radio" name="type_selector" id="prepreg" onclick="handleClickPP()">
+
+        <div id="all_tables">
+
+            <div id="pp_all_product" class="hide">
+
+                <label for="tg_filter">Tg</label>
+
+                <br>
+
+                <select id="tg_filter" onchange="handleFilterChangePP()">
+                    <option value="">---</option>
+                    {% for tg in tg_options %}
+                        <option value="{{ tg }}">{{ tg }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="cure_temp_filter">Cure/Processing Temperature</label>
+
+                <br>
+
+                <select id="cure_temp_filter" onchange="handleFilterChangePP()">
+                    <option value="">---</option>
+                    {% for cure_temp in cure_temp_options %}
+                        <option value="{{ cure_temp }}">{{ cure_temp }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="prepreg_processing_filter">Processing</label>
+
+                <br>
+
+                <select id="prepreg_processing_filter" onchange="handleFilterChangePP()">
+                    <option value="">---</option>
+                    {% for prepreg_processing in prepreg_processing_options %}
+                        <option value="{{ prepreg_processing }}">{{ prepreg_processing }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="omit_filter">Omit Market Segment</label>
+
+                <br>
+
+                <select id="omit_filter" onchange="handleFilterChangePP()">
+                    <option value="">---</option>
+                    {% for omit in omit_options %}
+                        <option value="{{ omit }}">{{ omit }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="resin_type_filter">Resin Type</label>
+
+                <br>
+
+                <select id="resin_type_filter" onchange="handleFilterChangePP()">
+                    <option value="">---</option>
+                    {% for resin_type in resin_type_options %}
+                        <option value="{{ resin_type }}">{{ resin_type }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+                <br>
+
+                <table>
+                    <thead class="column_names">
+                        <tr>
+                            <th>Prepreg Name/ID</th>
+                            <th>Tg</th>
+                            <th>Cure/Processing Temperature</th>
+                            <th>Processing</th>
+                            <th>Omit Market Segment</th>
+                            <th>Resin Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for products in prepreg %}
+                        <tr class="pp_row">
+                            <td>{{ products.prepreg_name }}</td>
+                            <td class="tg">{{ products.tg }}</td>
+                            <td class="cure_temp">{{ products.cure_temp }}</td>
+                            <td class="prepreg_processing">{{ products.prepreg_processing }}</td>
+                            <td class="omit">{{ products.omit }}</td>
+                            <td class="resin_type">{{ products.resin_type }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+            <div id="cf_all_product">
+
+<!--            onchange="" will change the options-->
+                <label for="tensile_modulus_filter">Tensile Modulus</label>
+
+                <br>
+
+                <select id="tensile_modulus_filter" onchange="handleFilterChangeCF()">
+                    <option value="">---</option>
+                    {% for tensile_modulus in tensile_modulus_options %}
+<!--                    the value equals whatever you set it to. Can be useful for troubleshooting-->
+                        <option value="{{ tensile_modulus }}">{{ tensile_modulus }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="tensile_strength_filter">Tensile Strength</label>
+
+                <br>
+
+                <select id="tensile_strength_filter" onchange="handleFilterChangeCF()">
+                    <option value="">---</option>
+                    {% for tensile_strength in tensile_strength_options %}
+                        <option value="{{ tensile_strength }}">{{ tensile_strength }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="resin_matrix_filter">Resin Matrix</label>
+
+                <br>
+
+                <select id="resin_matrix_filter" onchange="handleFilterChangeCF()">
+                    <option value="">---</option>
+                    {% for resin_matrix in resin_matrix_options %}
+                        <option value="{{ resin_matrix }}">{{ resin_matrix }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <label for="carbon_fiber_processing_filter">Processing</label>
+
+                <br>
+
+                <select id="carbon_fiber_processing_filter" onchange="handleFilterChangeCF()">
+                    <option value="">---</option>
+                    {% for carbon_fiber_processing in carbon_fiber_processing_options %}
+                        <option value="{{ carbon_fiber_processing }}">{{ carbon_fiber_processing }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+                <br>
+
+                <table>
+                    <thead class="column_names">
+                        <tr>
+                            <th>Carbon Fiber Name/ID</th>
+                            <th>Tensile Modulus</th>
+                            <th>Tensile Strength</th>
+                            <th>Resin Matrix</th>
+                            <th>Processing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for products in carbon_fiber %}
+                        <tr class="cf_row">
+                            <td>{{ products.carbon_fiber_name }}</td>
+                            <td class="tensile_modulus">{{ products.tensile_modulus }}</td>
+                            <td class="tensile_strength">{{ products.tensile_strength }}</td>
+                            <td class="resin_matrix">{{ products.resin_matrix }}</td>
+                            <td class="carbon_fiber_processing">{{ products.carbon_fiber_processing }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+        </div>
+
+</body>
+
+</html>
