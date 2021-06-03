@@ -1,4 +1,4 @@
-/* This CSS is just for the all_products.html */
+This CSS is just for the all_products.html
 
 * {
     /* border: dotted 1px red; */
@@ -11,35 +11,33 @@
     vertical-align: top;
 }
 
-.toray_logo img {
-    width: 200px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-#wrapper {
-    padding-left: 10px;
-    padding-top: 5px;
-    padding-right: 10px;
-    width: 1020px;
-    min-height: 600px;
-    zoom: 125%;
-}
-
-#wrapper img {
-    width: 40px;
-    height: auto;
-}
-
 .banner_logo {
     display: inline-block;
     vertical-align: top;
 }
 
-.banner_logo img {
-    width: 400px;
-    display: inline-block;
-    vertical-align: top;
+#page_disclaimer {
+    font-size: 10pt;
+    padding-left: 20px;
+    color: darkred;
+}
+
+#main_content_wrapper {
+    zoom: 115%;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-image: linear-gradient(to right, lightgrey, white);
+    margin: 20px;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+#wrapper img {
+    width: 40px;
+    height: auto;
 }
 
 .product_table {
@@ -55,17 +53,17 @@
 
 .product_table td {
     border: 1px solid black;
-    background-color: lightgray;
+    background-color: white;
 }
 
 .product_table .column_names {
     font-size: 14pt;
 }
 
-h1 {
-    padding-top: 25px;
-    padding-bottom: 25px;
+.product_selector_link {
+    display: inline-block;
+    vertical-align: top;
+    /* padding-left: 1475px; */
+    /* padding-top: 15px; */
 }
-
-
 

@@ -20,19 +20,26 @@
         <img src="{% static 'images/banner_logo.jpg' %}">
     </div>
 
-    <div id="wrapper">
+    <p id="page_disclaimer">*This is for internal use only*</p>
+    
+    <div id="main_content_wrapper">
 
-        <div id="pic_banner">
-        </div>
         <h1>All Products</h1>
 
         <div id="about_content">
-            <p id="page_use">
-                Everything in the tables are what is in the database. To add items to the database click the "Add Prepreg" or "Add Carbon Fiber" buttons.
+
+            <p>
+                Everything in the tables are what is in the database.
+                All the information you see in the tables will be shown on the Product Selector page of the website.
+                Please make sure everything you want to display is checked. If you wish to remove a entry from the database click "Edit" under the Edit Items column on the entry you want to remove and there will be an option to delete there. 
+                If you would like any of the product categories changed please contact IT. 
             </p>
+            
         </div>
 
         <div id="all_tables">
+
+            <h2>Prepreg</h2>
 
             <div id="pp_all_product">
                 <a href="/products/add_prepreg">Add Prepreg</a>
@@ -66,6 +73,8 @@
 
             </div>
 
+            <h2>Carbon Fiber</h2>
+
             <div id="cf_all_product">
                 <a href="/products/add_carbon_fiber">Add Carbon Fiber</a>
             <!--    This list is for Carbon Fiber products. See all_product def in views.py-->
@@ -97,6 +106,11 @@
 
             </div>
 
+        </div>
+
+        <div>
+            <p>Click the button below to go straight to the Toray CMA Product Selector page.</p>
+            <a class="product_selector_link" href="/product_selector"><button>Product Selector</button></a>
         </div>
 
     </div>
